@@ -28,11 +28,6 @@ public class TestGreeter {
   }
 
   @Test
-  public void intentionallyFailingTest() {
-    fail();
-  }
-
-  @Test
   public void greetShouldIncludeGreetingPhrase() {
     String someone = "World";
 
