@@ -43,7 +43,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'chmod +x ./maven-samples/single-module/scripts/03-unit-test.sh && ./maven-samples/single-module/scripts/03-unit-test.sh'
-                junit 'target/surefire-reports/**/*.xml'
+                junit 'maven-samples/single-module/target/surefire-reports/**/*.xml'
             }
         }
 
