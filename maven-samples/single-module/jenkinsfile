@@ -36,14 +36,13 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'pwd'
-                sh 'chmod +x ./scripts/01-build.sh && ./scripts/01-build.sh'
+                sh 'chmod +x ./maven-samples/single-module/scripts/01-build.sh && ./maven-samples/single-module/scripts/01-build.sh'
             }
         }
 
         stage('Unit Test') {
             steps {
-                sh 'chmod +x ./scripts/03-unit-test.sh && ./scripts/03-unit-test.sh'
+                sh 'chmod +x ./maven-samples/single-module/scripts/03-unit-test.sh && ./maven-samples/single-module/scripts/03-unit-test.sh'
                 junit 'target/surefire-reports/**/*.xml'
             }
         }
@@ -60,8 +59,8 @@ pipeline {
                     echo "Build Number: $buildNumber"
                 
                 withCredentials([usernamePassword(credentialsId: 'e0a32203-0728-451e-8640-ffc68362d361', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
-                    sh "chmod +x ./scripts/04-push.sh"
-                    sh "./scripts/04-push.sh $buildNumber"
+                    sh "chmod +x ./maven-samples/single-module/scripts/04-push.sh"
+                    sh "./maven-samples/single-module/scripts/04-push.sh $buildNumber"
                 }
                 echo "Build Completed - Job Name: $jobName  --  Build Number: $buildNumber"
             }
