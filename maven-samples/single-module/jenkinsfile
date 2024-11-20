@@ -36,6 +36,7 @@ pipeline {
 
         stage('Build Application') {
             steps {
+                sh 'pwd'
                 sh 'chmod +x ./scripts/01-build.sh && ./scripts/01-build.sh'
             }
         }
